@@ -1,3 +1,7 @@
-import React from "react"
+import React from "react";
+import PrimaryLayout from '../layouts/PrimaryLayout';
 
-export default () => <div>Hello world!</div>
+
+export default () => (
+    <PrimaryLayout />
+);
