@@ -1,10 +1,10 @@
 import React from 'react';
-import { ThemeContext } from  '../Context/ThemeContext';
+import { ThemeConsumer } from  '../Context/ThemeContext';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'gatsby';
 
 const Header = () => (
-    <ThemeContext.Consumer>
+    <ThemeConsumer>
         {theme => (
         <Navbar bg="light" expand="lg">
             <Navbar.Brand href="#home">NappySubs</Navbar.Brand>
@@ -28,7 +28,7 @@ const Header = () => (
             </Navbar.Collapse>
         </Navbar>
         )}
-    </ThemeContext.Consumer>
+    </ThemeConsumer>
 );
 
 export default Header;

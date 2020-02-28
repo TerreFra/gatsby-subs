@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 
-// Creo il context.
-export const ThemeContext = React.createContext();
+// Creo il context e lo scompongo.
+const { Provider, Consumer } = React.createContext();
 
-const Provider = props => {
+const ThemeProvider = props => {
     // themeState
     const [isDark, setDark] = useState(true);
-    
     return (
-        <ThemeContext.Provider value={{ isDark, changeTheme: () => setDark(!isDark)}}>
+        <Provider value={{ isDark, changeTheme: () => setDark(!isDark)}}>
             {props.children}
-        </ThemeContext.Provider>
+        </Provider>
     );
 }
 
 // Esporto il componente Provider.
 export default ({ element }) => (
-    <Provider> 
-        { element } 
-    </Provider>
+    <ThemeProvider> 
+        {element} 
+    </ThemeProvider>
 );
+
+export { Consumer as ThemeConsumer };

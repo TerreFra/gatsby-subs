@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { ThemeContext } from "../components/Context/ThemeContext";
+import { ThemeConsumer } from "../components/Context/ThemeContext";
 
 const PrimaryLayout = (props) => {
     return (
-      <ThemeContext.Consumer>
+      <ThemeConsumer>
         {theme => (
           <div id="primaryLayout" className={theme.isDark ? 'darkTheme' : 'lightTheme'}>
             <Header></Header>
@@ -13,7 +13,7 @@ const PrimaryLayout = (props) => {
             <Footer></Footer>
           </div>
       )}
-      </ThemeContext.Consumer>
+      </ThemeConsumer>
     );
   };
   
