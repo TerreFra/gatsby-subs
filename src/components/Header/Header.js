@@ -10,9 +10,13 @@ const Header = () => (
             <Navbar.Brand href="#home">NappySubs</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
+                <Nav>
+                    <Nav.Link as={Link} onClick={theme.handleMenuChange} to="#">Nappy</Nav.Link>
+                    <Nav.Link as={Link} onClick={theme.handleMenuChange} to="#">Acan</Nav.Link>
+                </Nav>
                 <Nav className="mr-auto">
-                    <Nav.Link as={Link} to="/nappy">Nappy</Nav.Link>
-                    <Nav.Link as={Link} to="/acan">Acan</Nav.Link>
+                    { theme.whatMenu === 'Nappy' && theme.nappyMenu.map(voice => { return <Nav.Link as={Link} to="/nappy">{voice}</Nav.Link> }) }
+                    { theme.whatMenu === 'Acan' && theme.acanMenu.map(voice => { return <Nav.Link as={Link} to="/nappy">{voice}</Nav.Link> }) }
                 </Nav>
                 <Form inline>
                 <Form.Check type="switch" id="custom-switch" label 
