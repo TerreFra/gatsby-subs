@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 // Creo il context e lo scompongo.
-const { Provider, Consumer } = React.createContext();
+let ThemeContext;
+const { Provider, Consumer } = ThemeContext = React.createContext();
 const ThemeProvider = props => {
 
     // themeState
@@ -34,4 +35,4 @@ export default ({ element }) => (
     </ThemeProvider>
 );
 
-export { Consumer as ThemeConsumer };
+export { Consumer as ThemeConsumer, ThemeContext };

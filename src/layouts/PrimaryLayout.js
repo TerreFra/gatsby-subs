@@ -1,19 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
-import { ThemeConsumer } from "../components/Context/ThemeContext";
+import { ThemeContext } from "../components/Context/ThemeContext";
 
 const PrimaryLayout = (props) => {
+
+  const { isDark } = useContext(ThemeContext);
     return (
-      <ThemeConsumer>
-        {theme => (
-          <div id="primaryLayout" className={theme.isDark ? 'darkTheme' : 'lightTheme'}>
+          <div id="primaryLayout" className={isDark ? 'darkTheme' : 'lightTheme'}>
             <Header></Header>
               {props.children}
             <Footer></Footer>
           </div>
-      )}
-      </ThemeConsumer>
     );
   };
   
