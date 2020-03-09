@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 // Creo il context e lo scompongo.
 let ThemeContext;
 const { Provider, Consumer } = ThemeContext = React.createContext();
+
 const ThemeProvider = props => {
 
     // themeState
@@ -11,27 +12,17 @@ const ThemeProvider = props => {
         setDark(!isDark);
     };
 
-    // booleanWebsite
-    const [whatMenu, setMenu] = useState();
-    const handleMenuChange = (event) => {
-        setMenu(event.target.innerHTML);
-    }
-
-    //menuVariables
-    const acanMenu = ['Projects', 'Special Thanks', 'About Us'];
-    const nappyMenu = ['Prog(h)etti', 'Canzoni', 'Contatti', 'Info', 'Guidine Utili'];
-
     return (
-        <Provider value={{ isDark, changeTheme, whatMenu, handleMenuChange, acanMenu, nappyMenu }}>
+        <Provider value={{ isDark, changeTheme }}>
             {props.children}
         </Provider>
     );
 }
 
 // Esporto il componente Provider.
-export default ({ element }) => (
-    <ThemeProvider> 
-        {element} 
+export default ({ children }) => (
+    <ThemeProvider>
+        {children} 
     </ThemeProvider>
 );
 
