@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 
 // Creo il context e lo scompongo.
 let MenuContext;
-const { Provider, Consumer } = MenuContext = React.createContext();
+
+const defaultState =  {
+    whatMenu: ''
+}
+
+const { Provider, Consumer } = MenuContext = React.createContext(defaultState);
 
 const MenuProvider = props => {
 

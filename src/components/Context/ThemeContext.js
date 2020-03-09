@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 
 // Creo il context e lo scompongo.
 let ThemeContext;
-const { Provider, Consumer } = ThemeContext = React.createContext();
+const defaultState =  {
+    isDark: true
+}
+
+const { Provider, Consumer } = ThemeContext = React.createContext(defaultState);
 
 const ThemeProvider = props => {
-
+ 
     // themeState
     const [isDark, setDark] = useState(true);
     const changeTheme = () => {
