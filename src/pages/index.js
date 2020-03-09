@@ -1,10 +1,32 @@
 import React from "react";
 import PrimaryLayout from '../layouts/PrimaryLayout';
+import Post from '../components/Post/Post';
 
-const Index = () => {
+import { graphql } from 'gatsby';
+
+export default ({ data }) => {
     return (
-        <PrimaryLayout />
-    );
-};
+      <PrimaryLayout>
+        {data.allWordpressPost.nodes.map((node) => (
+                <Post
+                    title={node.title}
+                    excerpt={node.excerpt}
+                    readMore={node.slug}
+              ></Post>
+        ))}
+      </PrimaryLayout>
+    ) 
+}
 
-export default Index;
+
+export const query = graphql`
+{
+  allWordpressPost {
+    nodes {
+      slug
+      title
+      excerpt
+    }
+  }
+}
+`

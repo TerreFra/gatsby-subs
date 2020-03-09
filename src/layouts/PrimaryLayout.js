@@ -7,7 +7,7 @@ const PrimaryLayout = (props) => {
 
   const { isDark } = useContext(ThemeContext);
     return (
-          <div id="primaryLayout" className={isDark ? 'darkTheme' : 'lightTheme'}>
+          <div id="primaryLayout" className={isDark ? 'lightTheme' : 'darkTheme'}>
             <Header></Header>
               {props.children}
             <Footer></Footer>
