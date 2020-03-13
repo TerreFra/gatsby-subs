@@ -2,12 +2,22 @@ import React from 'react'
 import { ListGroup } from 'react-bootstrap'
 
 const ListContainer = (props) => {
+
     return (
-        <ListGroup>
-            { props.node.allWordpressPost.nodes.map((node) => (
-                <ListGroup.Item dangerouslySetInnerHTML={{ __html: node.title }} />
-            ))}
-        </ListGroup>
+        <div className="listContainer py-3">
+            <h6 className="pb-1">Latest {props.name} Releases</h6>
+            <div className="littleDivider mb-1" />
+            <ListGroup variant="flush">
+                {props.postInfo.allWordpressPost.nodes.map((post, index) => (
+                    <ListGroup.Item key={index}>
+                        <a className="postTitle" dangerouslySetInnerHTML={{ __html: post.title }} />
+                        {post.categories.map((category) => (
+                            <p className="categoryName">{category.name}</p>
+                        ))}
+                    </ListGroup.Item>
+                ))}
+            </ListGroup>
+        </div>
     );
 }
 

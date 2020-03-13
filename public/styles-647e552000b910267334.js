@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{"+EzN":function(o,n,e){o.exports={footerClass:"Footer-module--footerClass---1FcT"}},"+eM2":function(o,n,e){},"8oQk":function(o,n,e){}}]);
+//# sourceMappingURL=styles-647e552000b910267334.js.map

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/components/Footer/Footer.module.scss"],"names":["module","exports"],"mappings":"gFACAA,EAAOC,QAAU,CAAC,YAAc,sC","file":"styles-647e552000b910267334.js","sourcesContent":["// extracted by mini-css-extract-plugin\nmodule.exports = {\"footerClass\":\"Footer-module--footerClass---1FcT\"};"],"sourceRoot":""}

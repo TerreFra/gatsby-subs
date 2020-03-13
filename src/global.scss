@@ -1,16 +1,43 @@
-.colorTheme {
-    height: 100vh;
-    transition: .3s ease-in-out;
-}
+// Theme Styles
+// ------------------
 
+.colorTheme { height: 100vh; transition: .3s ease-in-out; }
 .darkTheme {
     @extend .colorTheme;
     background-color: #242d3b;
     color: #fff;
 }
-
 .lightTheme {
     @extend .colorTheme;
     background-color: #fff;
     color: #000;
+}
+
+// Banner Styles
+// ------------------
+
+.bannerStart {
+    background: antiquewhite;
+    img { width: 700px; }
+}
+@media (max-width: 699px) {
+    .bannerStart {
+        img { width: 100%; }
+    }
+}
+
+
+// PostContainer Styles
+// ------------------
+.list-group-item { padding: 0.75rem 0rem; }
+.categoryName {
+    font-size: 0.8rem;
+    color: #98abc7;
+    margin: 0;
+}
+
+.littleDivider {
+    width: 50px;
+    height: 2px;
+    background: #98abc7;
 }

@@ -28,12 +28,6 @@ const Header = () => {
                 <Form.Check type="switch" id="custom-switch" label 
                             onClick={changeTheme}
                 />
-                    <FormControl
-                        type="text"
-                        placeholder="Search"
-                        className="mr-sm-2"
-                    />
-                    <Button variant="outline-success">Search</Button>
                 </Form>
             </Navbar.Collapse>
         </Navbar>
