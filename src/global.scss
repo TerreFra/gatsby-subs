@@ -1,7 +1,7 @@
 // Theme Variables
 // ------------------
 $title-font: 'Alegreya';
-$text-font: 'Roboto Slab';
+$text-font: 'Lora';
 
 $main-color-dark: #242d3b;
 $title-color-dark: #98abc7;
@@ -19,10 +19,23 @@ div, a, p { font-family: $text-font; }
 // Global utilities.
 // ------------------
 
+.dividerMenu {
+    width: 1px;
+    height: 15px;
+    background: $title-color-dark;
+    margin: auto 10px;
+}
+
+
+
 .littleDivider {
     width: 50px;
     height: 2px;
     background: $title-color-dark;
+}
+
+@media (max-width: 991px) {
+    .dividerMenu { display: none; }
 }
 
 
@@ -86,6 +99,7 @@ div, a, p { font-family: $text-font; }
     background: antiquewhite;
     img { width: 700px; }
 }
+
 @media (max-width: 699px) {
     .bannerStart {
         img { width: 100%; }
