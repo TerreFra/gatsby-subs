@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { ThemeContext } from  '../Context/ThemeContext';
 import { MenuContext } from  '../Context/MenuContext';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Nav, Form } from 'react-bootstrap';
 import { Link } from 'gatsby';
 
 const Header = () => {
@@ -12,7 +12,7 @@ const Header = () => {
     const { handleMenuChange, whatMenu, nappyMenu, acanMenu } = useContext(MenuContext);
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar expand="lg">
             <Navbar.Brand href="/">NappySubs</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

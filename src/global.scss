@@ -1,16 +1,76 @@
+// Theme Variables
+// ------------------
+
+$main-color-dark: #242d3b;
+$title-color-dark: #98abc7;
+$text-color-dark: #fff;
+
+$main-color-light: #fff;
+$text-color-light: #000;
+$title-color-light: #98abc7;
+
+
+// Global utilities.
+// ------------------
+
+.littleDivider {
+    width: 50px;
+    height: 2px;
+    background: $title-color-dark;
+}
+
+
 // Theme Styles
 // ------------------
 
-.colorTheme { height: 100vh; transition: .3s ease-in-out; }
+.colorTheme { height: 100vh; }
+
 .darkTheme {
     @extend .colorTheme;
-    background-color: #242d3b;
-    color: #fff;
+    background-color: $main-color-dark;
+    color: $text-color-dark;
+
+    & p, 
+    & a { color: $text-color-dark; } // Standard dark typography.
+
+    & .navbar a, // Navbar dark styles.
+    & .navbar-nav .nav-link {
+        color: $text-color-dark;
+
+        &:hover {
+            color: $text-color-dark;
+        }
+    }
+
+    & .list-group-item {
+        background-color: $main-color-dark;
+        padding: 0.75rem 0rem;
+
+        & .categoryName {
+            color: $title-color-dark;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+    }
 }
+
 .lightTheme {
     @extend .colorTheme;
-    background-color: #fff;
-    color: #000;
+    background-color: $main-color-light;
+    color: $text-color-light;
+
+    & p, & a { color: $text-color-light; } // Standard light typography.
+    
+    & .list-group-item { 
+        background-color: $main-color-light;
+        padding: 0.75rem 0rem;
+
+        & .categoryName {
+            color: $title-color-light;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+    }
 }
 
 // Banner Styles
@@ -24,20 +84,4 @@
     .bannerStart {
         img { width: 100%; }
     }
-}
-
-
-// PostContainer Styles
-// ------------------
-.list-group-item { padding: 0.75rem 0rem; }
-.categoryName {
-    font-size: 0.8rem;
-    color: #98abc7;
-    margin: 0;
-}
-
-.littleDivider {
-    width: 50px;
-    height: 2px;
-    background: #98abc7;
 }
