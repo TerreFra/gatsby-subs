@@ -7,12 +7,21 @@
 module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
-    { resolve: `gatsby-source-wordpress`, 
+    {
+      resolve: `gatsby-source-wordpress`,
       options: {
-      baseUrl: `wordpress.ikom.dev`,
-      protocol: `https`,
-      hostingWPCOM: false
+        baseUrl: `wordpress.ikom.dev`,
+        protocol: `https`,
+        hostingWPCOM: false
       }
     },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Alegreya','Roboto Slab']
+        }
+      }
+    }
   ]
 }

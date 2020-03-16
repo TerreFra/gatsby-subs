@@ -1,5 +1,7 @@
 // Theme Variables
 // ------------------
+$title-font: 'Alegreya';
+$text-font: 'Roboto Slab';
 
 $main-color-dark: #242d3b;
 $title-color-dark: #98abc7;
@@ -8,6 +10,10 @@ $text-color-dark: #fff;
 $main-color-light: #fff;
 $text-color-light: #000;
 $title-color-light: #98abc7;
+
+// Typohraphy
+h1,h2,h3,h4,h5,h6 { font-family: $title-font; }
+div, a, p { font-family: $text-font; }
 
 
 // Global utilities.
