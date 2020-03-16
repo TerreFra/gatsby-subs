@@ -13,8 +13,8 @@ const BlogpostLayout = ({ data }) => {
         <div id="blogpostLayout" className={isDark ? 'lightTheme' : 'darkTheme'}>
             <Header></Header>
             <div className="container">
-                <div className="row justify-content-md-center">
-                    <h1 dangerouslySetInnerHTML={{ __html: postData.title }} />
+                <div className="row justify-content-md-center py-4">
+                    <h1 className="pb-4" dangerouslySetInnerHTML={{ __html: postData.title }} />
                     <div dangerouslySetInnerHTML={{ __html: postData.content }} />
                 </div>
             </div>

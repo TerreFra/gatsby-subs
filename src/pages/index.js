@@ -27,6 +27,26 @@ export default ({ data }) => {
           </div>
         </div>
       </div>
+      <div className="container py-3">
+        <div className="row">
+          <div className="col-lg-6 acanPosts">
+            <ListContainer postInfo={data} name="Acan" />
+          </div>
+          <div className="col-lg-6 nappyPosts">
+            <ListContainer postInfo={data} name="Nappy" />
+          </div>
+        </div>
+      </div>
+      <div className="container py-3">
+        <div className="row">
+          <div className="col-lg-6 acanPosts">
+            <ListContainer postInfo={data} name="Acan" />
+          </div>
+          <div className="col-lg-6 nappyPosts">
+            <ListContainer postInfo={data} name="Nappy" />
+          </div>
+        </div>
+      </div>
     </PrimaryLayout>
   )
 }

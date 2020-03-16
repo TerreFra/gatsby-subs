@@ -11,13 +11,16 @@ $main-color-light: #fff;
 $text-color-light: #000;
 $title-color-light: #98abc7;
 
+$header-nav-background: #181f28;
+
 // Typohraphy
-h1,h2,h3,h4,h5,h6 { font-family: $title-font; }
+h1,h2,h3,h4,h5,h6 { font-family: $title-font; color: $title-color-dark; }
 div, a, p { font-family: $text-font; }
 
 
 // Global utilities.
 // ------------------
+html, body { height: 100%; }
 
 .dividerMenu {
     width: 1px;
@@ -42,15 +45,14 @@ div, a, p { font-family: $text-font; }
 // Theme Styles
 // ------------------
 
-.colorTheme { height: 100vh; }
-
 .darkTheme {
-    @extend .colorTheme;
     background-color: $main-color-dark;
     color: $text-color-dark;
 
     & p, 
     & a { color: $text-color-dark; } // Standard dark typography.
+
+    & .navbar { background: $header-nav-background; }
 
     & .navbar a, // Navbar dark styles.
     & .navbar-nav .nav-link {
@@ -74,11 +76,12 @@ div, a, p { font-family: $text-font; }
 }
 
 .lightTheme {
-    @extend .colorTheme;
     background-color: $main-color-light;
     color: $text-color-light;
 
     & p, & a { color: $text-color-light; } // Standard light typography.
+
+    & .nappyNavigation { border-bottom: 1px solid #f5f5f5; }
     
     & .list-group-item { 
         background-color: $main-color-light;
