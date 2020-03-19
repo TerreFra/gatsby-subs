@@ -1,17 +1,4 @@
-// Theme Variables
-// ------------------
-$title-font: 'Alegreya';
-$text-font: 'Lora';
-
-$main-color-dark: #242d3b;
-$title-color-dark: #98abc7;
-$text-color-dark: #fff;
-
-$main-color-light: #fff;
-$text-color-light: #000;
-$title-color-light: #98abc7;
-
-$header-nav-background: #181f28;
+@import 'variables.scss';
 
 // Typohraphy
 h1,h2,h3,h4,h5,h6 { font-family: $title-font; color: $title-color-dark; }
@@ -28,8 +15,6 @@ html, body { height: 100%; }
     background: $title-color-dark;
     margin: auto 10px;
 }
-
-
 
 .littleDivider {
     width: 50px;
@@ -108,32 +93,3 @@ html, body { height: 100%; }
         img { width: 100%; }
     }
 }
-
-// Progress Bar
-// ------------------
-.progressBarContainer {
-    display: flex;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    position: fixed;
-    width: 100%;
-    transition: height 0.3s ease;
-    z-index: 9999;
-    overflow: hidden;
-
-    & .progressBar {
-        top: 0px;
-        bottom: 0px;
-        width: 100%;
-        transform: translateX(-100%);
-        transition: transform 0.1s ease;
-        will-change: transform;
-        position: relative;
-        left: 0px;
-        background: $title-color-dark;
-    }
-}
-
-// PostTools
-// ------------------

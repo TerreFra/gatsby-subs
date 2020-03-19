@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './ReadProgressBar.scss';
 
 const ReadProgressBar = props => {
     const [progress, setProgress] = useState(0);

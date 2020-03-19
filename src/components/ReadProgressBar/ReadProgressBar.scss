@@ -1,0 +1,28 @@
+@import '../../variables.scss';
+
+// Progress Bar
+// ------------------
+
+.progressBarContainer {
+    display: flex;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+    width: 100%;
+    transition: height 0.3s ease;
+    z-index: 9999;
+    overflow: hidden;
+
+    & .progressBar {
+        top: 0px;
+        bottom: 0px;
+        width: 100%;
+        transform: translateX(-100%);
+        transition: transform 0.1s ease;
+        will-change: transform;
+        position: relative;
+        left: 0px;
+        background: $title-color-dark;
+    }
+}
