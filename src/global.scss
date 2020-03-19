@@ -93,3 +93,9 @@ html, body { height: 100%; }
         img { width: 100%; }
     }
 }
+
+// Blogpost Layout
+// ------------------
+
+#blogpostLayout p { color: inherit!important; }
+.modal-backdrop { background: unset; }
