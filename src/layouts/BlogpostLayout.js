@@ -7,6 +7,8 @@ import PostTools from '../components/PostTools/PostTools';
 import { graphql } from 'gatsby';
 import { ThemeContext } from "../components/Context/ThemeContext";
 
+import ls from 'local-storage'; // Local Storage
+
 const BlogpostLayout = ({ data }) => {
 
     // Refs & Context
@@ -15,14 +17,16 @@ const BlogpostLayout = ({ data }) => {
     const progressRef = useRef();
 
     // Local State
-    const [size, setSize] = useState(16);
-    const [lineHeight, setLineHeight] = useState(1.6);
+    const [size, setSize] = useState(ls.get('fontSize') || '16px');
+    const [lineHeight, setLineHeight] = useState(ls.get('lineHeight') || '1.6');
     const handleSetSize = (value) => {
         setSize(value);
+        ls.set('fontSize', value);
     }
 
     const handleSetLineHeight = (value) => {
         setLineHeight(value);
+        ls.set('lineHeight', value)
     }
 
     return (
@@ -32,7 +36,7 @@ const BlogpostLayout = ({ data }) => {
             <div className="container">
                 <div className="row justify-content-md-center py-4">
                     <div className="postHeading">
-                        <PostTools handleSize={handleSetSize} handleLineHeight={handleSetLineHeight} />
+                        <PostTools handleSize={handleSetSize} handleLineHeight={handleSetLineHeight} fontSize={size} lineHeight={lineHeight} />
                         <h1 className="pb-4" dangerouslySetInnerHTML={{ __html: postData.title }} />
                     </div>
                     <div dangerouslySetInnerHTML={{ __html: postData.content }} ref={progressRef} style={{ fontSize: size, lineHeight: lineHeight }} />
