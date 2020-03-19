@@ -5,8 +5,8 @@ import { faCog } from '@fortawesome/free-solid-svg-icons';
 
 const PostTools = props => {
 
+    // Hooks State and Functions.
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -33,7 +33,7 @@ const PostTools = props => {
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>As your wish nappy team. </Modal.Title>
+                    <Modal.Title>Nappy's maggix grants u wisshis. </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <span>Font Size: { props.fontSize }</span><input className="w-100" type="range" min="12" max="24" onChange={handleFontChange} defaultValue={parseInt(props.fontSize)} />
@@ -44,7 +44,7 @@ const PostTools = props => {
                         Close
           </Button>
                     <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                        Save Maggix
           </Button>
                 </Modal.Footer>
             </Modal>

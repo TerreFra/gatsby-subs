@@ -1,12 +1,11 @@
+import { ThemeContext } from "../components/Context/ThemeContext"; // Context
+
 import React, { useContext, useRef, useState } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import ProgressBar from '../components/ReadProgressBar/ReadProgressBar';
 import PostTools from '../components/PostTools/PostTools';
-
-import { graphql } from 'gatsby';
-import { ThemeContext } from "../components/Context/ThemeContext";
-
+import { graphql } from 'gatsby'; // GraphQL
 import ls from 'local-storage'; // Local Storage
 
 const BlogpostLayout = ({ data }) => {
@@ -16,7 +15,7 @@ const BlogpostLayout = ({ data }) => {
     const postData = data.wordpressPost;
     const progressRef = useRef();
 
-    // Local State
+    // Hooks State and Functions.
     const [size, setSize] = useState(ls.get('fontSize') || '16px');
     const [lineHeight, setLineHeight] = useState(ls.get('lineHeight') || '1.6');
     const handleSetSize = (value) => {
