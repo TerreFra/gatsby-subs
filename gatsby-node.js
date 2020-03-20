@@ -9,6 +9,9 @@ exports.createPages = ({ graphql, actions }) => {
         allWordpressPost {
             nodes {
                 slug
+                categories {
+                    slug
+                  }
             }
         }
     }`).then(result => {
@@ -17,7 +20,8 @@ exports.createPages = ({ graphql, actions }) => {
                 path: node.slug,
                 component: blogPostTemplate,
                 context: {
-                    slug: node.slug
+                    slug: node.slug,
+                    category: node.categories[0].slug
                 }
             })
         })

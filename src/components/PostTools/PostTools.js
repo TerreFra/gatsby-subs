@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
+import { Link } from 'gatsby';
 import { Modal, Button } from 'react-bootstrap';
-import { CompactPicker } from 'react-color';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCog } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faListUl } from '@fortawesome/free-solid-svg-icons';
 
 const PostTools = props => {
 
     // Modal createState & setState
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showResizer, setShowResizer] = useState(false);
+    const [showChapters, setShowChapters] = useState(false);
 
-    // Handle Color e Font Changes.
-    const handleBGColorChange = (color) => props.handleBGColor(color.hex);
-    const handleBGChangeComplete = (color) => props.handleBGColor(color.hex);
-    const handleFTColorChange = (color) => props.handleFTColor(color.hex);
-    const handleFTChangeComplete = (color) => props.handleFTColor(color.hex);
+    const handleResizerClose = () => setShowResizer(false);
+    const handleResizerShow = () => setShowResizer(true);
+
+    const handleChapterClose = () => setShowChapters(false);
+    const handleChapterShow = () => setShowChapters(true);
 
     const handleFontChange = e => {
         const newValue = e.target.value + 'px';
@@ -34,35 +32,41 @@ const PostTools = props => {
     return (
         <div id="postToolsContainer">
             <div className="postTools text-center mb-2">
-                <FontAwesomeIcon icon={faCog} onClick={handleShow} style={{ color: props.colorFT }} />
+                <FontAwesomeIcon icon={faCog} onClick={handleResizerShow} />
+                <span className="mr-3"></span>
+                <FontAwesomeIcon icon={faListUl} onClick={handleChapterShow} />
             </div>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={showResizer} onHide={handleResizerClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Nappy's maggix grants u wisshis. </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <span>Font Size: {props.fontSize}</span><input className="w-100" type="range" min="12" max="24" onChange={handleFontChange} defaultValue={parseInt(props.fontSize)} />
                     <span>Line Height: {props.lineHeight}</span><input className="w-100" type="range" min="10" max="26" onChange={handleLineHeightChange} defaultValue={parseInt(props.lineHeight * 10)} />
-                    <div className="mt-3 text-center">Background Color:</div>
-                    <div className="my-3 text-center">
-                        <CompactPicker onChange={handleBGColorChange} onChangeComplete={handleBGChangeComplete} color={props.colorBG} />
-                    </div>
-                    <div className="mt-3 text-center">Font Color: </div>
-                    <div className="my-3 text-center">
-                        <CompactPicker onChange={handleFTColorChange} onChangeComplete={handleFTChangeComplete} color={props.colorFT} />
-                    </div>
-
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-          </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Maggix
-          </Button>
+                    <Button variant="secondary" onClick={handleResizerClose}>Close</Button>
+                    <Button variant="primary" onClick={handleResizerClose}>Save Maggix</Button>
                 </Modal.Footer>
             </Modal>
+
+            <Modal show={showChapters} onHide={handleChapterClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Nappy's maggix grants your chapterz. </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {props.chaptersInfo.nodes.map((info, index) => (
+                        <div>
+                            <Link to={info.slug}>{index + 1}. {info.title}</Link> 
+                        </div>
+                    ))}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={handleChapterClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+
         </div>
     );
 }

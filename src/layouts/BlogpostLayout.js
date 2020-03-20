@@ -13,6 +13,7 @@ const BlogpostLayout = ({ data }) => {
     // Refs & Context
     const { isDark } = useContext(ThemeContext);
     const postData = data.wordpressPost;
+    const categoryPostData = data.allWordpressPost;
     const progressRef = useRef();
 
     // Hooks State and Functions.
@@ -29,31 +30,17 @@ const BlogpostLayout = ({ data }) => {
         ls.set('lineHeight', value)
     }
 
-
-
-    // ColorPicker createState & setState
-    const [colorBG, setColorBG] = useState(ls.get('backgroundColor') || []);
-    const [colorFT, setColorFT] = useState(ls.get('fontColor') || []);
-    const handleSetBGColor = (value) => {
-        ls.set('backgroundColor', value);
-        setColorBG(value);
-    }
-    const handleSetFTColor = (value) => {
-        ls.set('fontColor', value);
-        setColorFT(value);
-    }
-
     return (
-        <div id="blogpostLayout" className={isDark ? 'lightTheme' : 'darkTheme'} style={{ background: colorBG }}>
+        <div id="blogpostLayout" className={isDark ? 'lightTheme' : 'darkTheme'}>
             <Header></Header>
             <ProgressBar attachTo={progressRef} />
             <div className="container">
                 <div className="row justify-content-md-center py-4">
                     <div className="postHeading">
-                        <PostTools handleSize={handleSetSize} handleLineHeight={handleSetLineHeight} fontSize={size} lineHeight={lineHeight} handleBGColor={handleSetBGColor} handleFTColor={handleSetFTColor} colorBG={colorBG} colorFT={colorFT} />
-                        <h1 className="pb-4" dangerouslySetInnerHTML={{ __html: postData.title }} style={{ color: colorFT }}/>
+                        <PostTools handleSize={handleSetSize} handleLineHeight={handleSetLineHeight} fontSize={size} lineHeight={lineHeight} chaptersInfo={categoryPostData} />
+                        <h1 className="pb-4" dangerouslySetInnerHTML={{ __html: postData.title }} />
                     </div>
-                    <div dangerouslySetInnerHTML={{ __html: postData.content }} ref={progressRef} style={{ fontSize: size, lineHeight: lineHeight, color: colorFT }} />
+                    <div dangerouslySetInnerHTML={{ __html: postData.content }} ref={progressRef} style={{ fontSize: size, lineHeight: lineHeight }} />
                 </div>
             </div>
             <Footer></Footer>
@@ -64,7 +51,13 @@ const BlogpostLayout = ({ data }) => {
 export default BlogpostLayout;
 
 export const query = graphql`
-    query($slug: String!) {
+    query($slug: String!, $category: String!) {
+        allWordpressPost(filter: {categories: {elemMatch: {slug: {eq: $category }}}}) {
+            nodes {
+                title
+                slug
+            }
+        }
         wordpressPost(slug: { eq: $slug }) {
             content
             title
