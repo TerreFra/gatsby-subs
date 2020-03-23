@@ -5,6 +5,7 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import ProgressBar from '../components/ReadProgressBar/ReadProgressBar';
 import PostTools from '../components/PostTools/PostTools';
+import { DiscussionEmbed } from 'disqus-react';
 import { graphql } from 'gatsby'; // GraphQL
 import ls from 'local-storage'; // Local Storage
 
@@ -15,6 +16,13 @@ const BlogpostLayout = ({ data }) => {
     const postData = data.wordpressPost;
     const categoryPostData = data.allWordpressPost;
     const progressRef = useRef();
+
+    // disqusConfig
+    const disqusConfig = {
+        shortname: 'https-peaceful-bhaskara-a508dd-netlify-com',
+        config: { identifier: postData.slug }
+    }
+
 
     // Hooks State and Functions.
     const [size, setSize] = useState(ls.get('fontSize') || '16px');
@@ -42,6 +50,7 @@ const BlogpostLayout = ({ data }) => {
                     </div>
                     <div dangerouslySetInnerHTML={{ __html: postData.content }} ref={progressRef} style={{ fontSize: size, lineHeight: lineHeight }} />
                 </div>
+                <DiscussionEmbed {...disqusConfig} />
             </div>
             <Footer></Footer>
         </div>
@@ -61,6 +70,7 @@ export const query = graphql`
         wordpressPost(slug: { eq: $slug }) {
             content
             title
+            slug
         }
     }
   `

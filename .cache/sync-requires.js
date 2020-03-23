@@ -5,8 +5,8 @@ const preferDefault = m => m && m.default || m
 
 
 exports.components = {
-  "component---src-layouts-blogpost-layout-js": hot(preferDefault(require("/home/francesco/Documenti/Gatsby/gatsby-subs/src/layouts/BlogpostLayout.js"))),
-  "component---cache-dev-404-page-js": hot(preferDefault(require("/home/francesco/Documenti/Gatsby/gatsby-subs/.cache/dev-404-page.js"))),
-  "component---src-pages-index-js": hot(preferDefault(require("/home/francesco/Documenti/Gatsby/gatsby-subs/src/pages/index.js")))
+  "component---src-layouts-blogpost-layout-js": hot(preferDefault(require("/Users/ikommerce/Documents/Gatsby/gatsby-subs/src/layouts/BlogpostLayout.js"))),
+  "component---cache-dev-404-page-js": hot(preferDefault(require("/Users/ikommerce/Documents/Gatsby/gatsby-subs/.cache/dev-404-page.js"))),
+  "component---src-pages-index-js": hot(preferDefault(require("/Users/ikommerce/Documents/Gatsby/gatsby-subs/src/pages/index.js")))
 }
 
