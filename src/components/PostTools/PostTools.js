@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog, faListUl } from '@fortawesome/free-solid-svg-icons';
+import './PostTools.scss';
 
 const PostTools = props => {
 
@@ -56,9 +57,9 @@ const PostTools = props => {
                     <Modal.Title>Nappy's maggix grants your chapterz. </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {props.chaptersInfo.nodes.map((info, index) => (
-                        <div>
-                            <Link to={info.slug}>{index + 1}. {info.title}</Link> 
+                    {props.chaptersInfo.nodes.slice(0).reverse().map((info, index) => (
+                        <div className="chapterInfo">
+                            <Link to={info.slug} dangerouslySetInnerHTML={{__html: (index + 1) + '.&nbsp'  + info.title}} /> 
                         </div>
                     ))}
                 </Modal.Body>

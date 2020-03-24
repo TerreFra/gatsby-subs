@@ -3,7 +3,6 @@ import { Link } from 'gatsby';
 import { ListGroup } from 'react-bootstrap';
 
 const ListContainer = (props) => {
-
     return (
         <div className="listContainer py-3">
             <h5 className="pb-1">Latest {props.name} Releases</h5>
