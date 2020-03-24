@@ -19,7 +19,7 @@ const BlogpostLayout = ({ data }) => {
 
     // disqusConfig
     const disqusConfig = {
-        shortname: 'nappysubs',
+        shortname: 'nappy-1',
         config: { identifier: postData.slug }
     }
 
