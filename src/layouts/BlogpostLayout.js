@@ -19,7 +19,7 @@ const BlogpostLayout = ({ data }) => {
 
     // disqusConfig
     const disqusConfig = {
-        shortname: 'https-peaceful-bhaskara-a508dd-netlify-com',
+        shortname: 'nappysubs',
         config: { identifier: postData.slug }
     }
 
