@@ -1,0 +1,31 @@
+@import '../../variables.scss';
+
+.card-img, .card-img-top {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.darkTheme {
+    & .card {
+    border: 0;
+    background: unset;
+
+    & .card-header {
+        color: white;
+        border: 0;
+        background: $header-nav-background;
+        }
+    }
+}
+
+.lightTheme {
+    & .card {
+    border: 0;
+    background: unset;
+
+    & .card-header {
+        color: white;
+        background: #98abc7;
+        }
+    }
+}

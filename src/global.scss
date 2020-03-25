@@ -41,7 +41,7 @@ html, body { height: 100%; }
 
     & .navbar a, // Navbar dark styles.
     & .navbar-nav .nav-link {
-        color: $text-color-dark;
+        color: $text-color-dark!important;
 
         &:hover {
             color: $text-color-dark;
@@ -88,6 +88,10 @@ html, body { height: 100%; }
     top: 65px;
     margin-top: -100px;
     margin-right: 0.5rem;
+}
+
+@media(max-width: 991px) {
+    .navbar-collapse { margin-top: 2.5rem; }
 }
 
 // Banner Styles

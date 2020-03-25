@@ -1,11 +1,16 @@
-import { ThemeContext } from "../components/Context/ThemeContext"; // Context
-
 import React, { useContext, useRef, useState } from "react";
+import { ThemeContext } from "../components/Context/ThemeContext"; // Context.
+
+// Layout
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+
+// Blog Tools
+import ResizerTool from '../components/PostTools/ResizerTool';
+import ChapterTool from '../components/PostTools/ChapterTool';
 import ProgressBar from '../components/ReadProgressBar/ReadProgressBar';
-import PostTools from '../components/PostTools/PostTools';
-import { DiscussionEmbed } from 'disqus-react';
+
+import { DiscussionEmbed } from 'disqus-react'; // Disqus-React.
 import { graphql } from 'gatsby'; // GraphQL
 import ls from 'local-storage'; // Local Storage
 
@@ -42,16 +47,26 @@ const BlogpostLayout = ({ data }) => {
         <div id="blogpostLayout" className={isDark ? 'lightTheme' : 'darkTheme'}>
             <Header></Header>
             <ProgressBar attachTo={progressRef} />
+
             <div className="container">
-                <div className="row justify-content-md-center py-4">
+
+                <div className="postTools text-center py-4">
+                    <ResizerTool handleSize={handleSetSize} handleLineHeight={handleSetLineHeight} fontSize={size} lineHeight={lineHeight} />
+                    <span className="mr-3"></span>
+                    <ChapterTool chaptersInfo={categoryPostData} />
+                </div>
+
+                <div className="row justify-content-md-center px-3">
                     <div className="postHeading">
-                        <PostTools handleSize={handleSetSize} handleLineHeight={handleSetLineHeight} fontSize={size} lineHeight={lineHeight} chaptersInfo={categoryPostData} />
                         <h1 className="pb-4" dangerouslySetInnerHTML={{ __html: postData.title }} />
                     </div>
                     <div dangerouslySetInnerHTML={{ __html: postData.content }} ref={progressRef} style={{ fontSize: size, lineHeight: lineHeight }} />
                 </div>
+
                 <DiscussionEmbed {...disqusConfig} />
+
             </div>
+            
             <Footer></Footer>
         </div>
     );
