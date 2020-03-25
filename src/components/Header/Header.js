@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Logo from '../../../static/logoNappy.png';
 
 import { ThemeContext } from '../Context/ThemeContext';
 import { MenuContext } from '../Context/MenuContext';
@@ -14,7 +15,9 @@ const Header = () => {
     return (
         <div className="nappyNavigation">
             <Navbar expand="lg">
-                <Navbar.Brand as={Link} to="/">NappySubs</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" className="logoPosition">
+                    <img src={Logo} alt="logoNappy" style={{ width: '100px' }}/>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">

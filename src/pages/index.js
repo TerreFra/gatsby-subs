@@ -27,6 +27,9 @@ export default ({ data }) => {
           </div>
         </div>
       </div>
+      <div className="ongoingProjects">
+        
+      </div>
     </PrimaryLayout>
   )
 }
