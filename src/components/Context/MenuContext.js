@@ -18,7 +18,7 @@ const MenuProvider = props => {
     }
 
     //menuVariables
-    const acanMenu = ['Projects', 'Special Thanks', 'About Us'];
+    const acanMenu = [ {'Projects' : 'projects'}, {'Special Thanks' : 'special_thanks'}, {'About Us': 'about_us' } ];
     const nappyMenu = ['Prog(h)etti', 'Canzoni', 'Contatti', 'Info', 'Guidine Utili'];
 
     return (

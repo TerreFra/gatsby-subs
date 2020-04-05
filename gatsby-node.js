@@ -2,7 +2,9 @@ const path = require("path");
 
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions; 
+
     const blogPostTemplate = path.resolve('./src/layouts/BlogpostLayout.js');
+    const pagesTemplate = path.resolve('./src/layouts/PagesLayout.js');
 
     return graphql(`
     {
@@ -14,7 +16,15 @@ exports.createPages = ({ graphql, actions }) => {
                   }
             }
         }
+        allWordpressPage {
+            nodes {
+                slug
+                content
+            }
+          }
     }`).then(result => {
+
+        // Create Post.
         result.data.allWordpressPost.nodes.forEach((node) => {
             createPage({
                 path: node.slug,
@@ -25,5 +35,17 @@ exports.createPages = ({ graphql, actions }) => {
                 }
             })
         })
+
+        // Create Pages.
+        result.data.allWordpressPage.nodes.forEach((node) => {
+            createPage({
+                path: node.slug,
+                component: pagesTemplate,
+                context: {
+                    slug: node.slug,
+                }
+            })
+        })
+
     })
 }

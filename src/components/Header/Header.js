@@ -24,8 +24,8 @@ const Header = () => {
                         <Nav.Link as={Link} onClick={handleMenuChange} to="#">Nappy</Nav.Link>
                         <Nav.Link as={Link} onClick={handleMenuChange} to="#">Acan</Nav.Link>
                         {whatMenu && <span className="dividerMenu"></span> }
-                        {whatMenu === 'Nappy' && nappyMenu.map(voice => { return <Nav.Link as={Link} to="/nappy">{voice}</Nav.Link> })}
-                        {whatMenu === 'Acan' && acanMenu.map(voice => { return <Nav.Link as={Link} to="/nappy">{voice}</Nav.Link> })}
+                        {whatMenu === 'Nappy' && nappyMenu.map(voice => { return <Nav.Link as={Link} to="/nappy">{Object.keys(voice)}</Nav.Link> })}
+                        {whatMenu === 'Acan' && acanMenu.map(voice => { return <Nav.Link as={Link} to={Object.values(voice)}>{Object.keys(voice)}</Nav.Link> })}
                     </Nav>
                     <Form inline>
                         <Form.Check type="switch" id="custom-switch" label
