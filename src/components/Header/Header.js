@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Logo from '../../../static/logoNappy.png';
+import SearchBar from '../SearchBar/SearchBar';
 
 import { ThemeContext } from '../Context/ThemeContext';
 import { MenuContext } from '../Context/MenuContext';
@@ -28,6 +29,7 @@ const Header = () => {
                         {whatMenu === 'Acan' && acanMenu.map(voice => { return <Nav.Link as={Link} to={Object.values(voice)}>{Object.keys(voice)}</Nav.Link> })}
                     </Nav>
                     <Form inline>
+                        <SearchBar />
                         <Form.Check type="switch" id="custom-switch" label
                             onClick={changeTheme}
                         />
