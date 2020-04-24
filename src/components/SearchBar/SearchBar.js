@@ -3,42 +3,64 @@ import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useStaticQuery, graphql, Link } from 'gatsby'; // GraphQL
+import * as JsSearch from "js-search"; // JsSearch
 import './SearchBar.scss';
 
+// Link utili: https://github.com/bvaughn/js-search || https://www.gatsbyjs.org/docs/adding-search-with-js-search
 
 const SearchBar = () => {
 
     const data = useStaticQuery(graphql`
-    query HeaderQuery {
-        allWordpressPost {
-            nodes {
-              slug
-              title
+        query HeaderQuery {
+            allWordpressPost {
+                nodes {
+                slug
+                title
+                }
             }
-          }
-     }
+        }
     `);
+
 
     // Modal createState & setState
     const [showSearch, setShowSearch] = useState(false);
     const handleSearchClose = () => setShowSearch(false);
     const handleSearchShow = () => setShowSearch(true);
 
-    // Ricerca AutoCompletata.
-    const [searchValue, setSearchValue] = useState('');
-    const [searchResults, setSearchResults] = React.useState([]);
+    // Js-Search Index & StateManager
+    const [rawIndex, setRawIndex] = useState();
+    const [searchIndex, setSearchIndex] = useState();
+    const [searchResult, setSearchResult] = useState();
+    const [searchQuery, setSearchQuery] = useState('');
 
+    useEffect(() => {
+        setRawIndex(data.allWordpressPost.nodes);
+        if(rawIndex) {
+            rebuildIndex();
+        } else { console.log('Loading Search..'); }
+    }, [rawIndex]);
 
-    const handleSearch = e => {
-        setSearchValue(e.target.value);
-        console.log(data.allWordpressPost.nodes);
+    const rebuildIndex  = () => {
+       const dataToSearch = new JsSearch.Search('slug');
+
+       dataToSearch.indexStrategy = new JsSearch.PrefixIndexStrategy();
+       dataToSearch.sanitizer = new JsSearch.LowerCaseSanitizer();
+       dataToSearch.searchIndex = new JsSearch.TfIdfSearchIndex("slug");
+
+       dataToSearch.addIndex('slug');
+       dataToSearch.addIndex('title');
+
+       dataToSearch.addDocuments(rawIndex);
+       setSearchIndex(dataToSearch);
+    }
+
+    const searchData = e => {
+        const queryResult = searchIndex.search(e.target.value);
+        setSearchQuery(e.target.value);
+        setSearchResult(queryResult);
     }
 
 
-    useEffect(() => {
-        const results = data.allWordpressPost.nodes.filter(item  => item.title.toLowerCase().includes(searchValue.toLowerCase()) );
-        setSearchResults(results);
-    }, [searchValue])
 
     return (
         <React.Fragment>
@@ -48,10 +70,10 @@ const SearchBar = () => {
                 <Modal.Header closeButton />
 
                 <Modal.Body>
-                    <input type="text" onChange={handleSearch} />
-                    {searchResults.map(item => (
-                        <li key={item.title}>
-                            <Link to={item.slug} key={item.title} dangerouslySetInnerHTML={{__html: item.title}} /> 
+                    <input type="text" value={searchQuery} onChange={searchData} />
+                    {searchResult && searchResult.map((result, index) => (
+                        <li>
+                            <Link key={index} to={result.slug} dangerouslySetInnerHTML={{ __html: result.title }} />
                         </li>
                     ))}
                 </Modal.Body>
