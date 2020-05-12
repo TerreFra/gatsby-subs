@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Accordion, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faListUl } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby';
@@ -14,6 +14,17 @@ const ChapterTool = props => {
     const handleChapterClose = () => setShowChapters(false);
     const handleChapterShow = () => setShowChapters(true);
 
+
+    const splitChapters = () => {
+            let chaptersReverse = props.chaptersInfo.nodes.slice(0).reverse();
+            let results = [];
+
+            while (chaptersReverse.length) {
+                results.push(chaptersReverse.splice(0, 10));
+            }
+            
+            return results;
+   }
     return (
         <React.Fragment>
             <FontAwesomeIcon icon={faListUl} onClick={handleChapterShow} />
@@ -25,10 +36,21 @@ const ChapterTool = props => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    {props.chaptersInfo.nodes.slice(0).reverse().map((info, index) => (
-                        <div className="chapterInfo">
-                            <Link to={info.slug} key={info.title} dangerouslySetInnerHTML={{__html: (index + 1) + '.&nbsp'  + info.title}} /> 
-                        </div>
+                    {splitChapters().map((outroArray, index) => (
+                        <Accordion>
+                            <Accordion.Toggle as={Card.Header} eventKey={index}>
+                                <h6 dangerouslySetInnerHTML={{__html: outroArray[0].title + '  ~  ' + '  ~  ' +  outroArray[outroArray.length -1 ].title}} />
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey={index}>
+                                <div className="internalAccordion">
+                                {outroArray.map((intoArray) => (
+                                    <li>
+                                        <Link to={intoArray.slug} key={intoArray.title} dangerouslySetInnerHTML={{__html: intoArray.title}} />
+                                    </li>
+                                ))}
+                                </div>
+                            </Accordion.Collapse>
+                        </Accordion>
                     ))}
                 </Modal.Body>
                 

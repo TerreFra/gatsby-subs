@@ -61,7 +61,6 @@ const SearchBar = () => {
     }
 
 
-
     return (
         <React.Fragment>
             <FontAwesomeIcon icon={faSearch} onClick={handleSearchShow} />
@@ -72,8 +71,8 @@ const SearchBar = () => {
                 <Modal.Body>
                     <input type="text" value={searchQuery} onChange={searchData} />
                     {searchResult && searchResult.map((result, index) => (
-                        <li>
-                            <Link key={index} to={result.slug} dangerouslySetInnerHTML={{ __html: result.title }} />
+                        <li key={index}>
+                            <Link to={result.slug} dangerouslySetInnerHTML={{ __html: result.title }} />
                         </li>
                     ))}
                 </Modal.Body>
