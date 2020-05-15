@@ -37,9 +37,9 @@ const ChapterTool = props => {
 
                 <Modal.Body>
                     {splitChapters().map((outroArray, index) => (
-                        <Accordion>
+                        <Accordion className="chapterAccordion">
                             <Accordion.Toggle as={Card.Header} eventKey={index}>
-                                <h6 dangerouslySetInnerHTML={{__html: outroArray[0].title + '  ~  ' + '  ~  ' +  outroArray[outroArray.length -1 ].title}} />
+                                <h6 dangerouslySetInnerHTML={{__html: outroArray[0].title + '<span class="introDivider">–</span>' +  outroArray[outroArray.length -1 ].title}} />
                             </Accordion.Toggle>
                             <Accordion.Collapse eventKey={index}>
                                 <div className="internalAccordion">
