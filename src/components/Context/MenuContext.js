@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 let MenuContext;
 
 const defaultState =  {
-    whatMenu: ''
+    acanMenu: ''
 }
 
 const { Provider, Consumer } = MenuContext = React.createContext(defaultState);
