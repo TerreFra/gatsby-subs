@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Logo from '../../../static/logoNappy.png';
+import Logo from '../../../static/logoAcan.png';
 import SearchBar from '../SearchBar/SearchBar';
 
 import { ThemeContext } from '../Context/ThemeContext';
@@ -11,22 +11,18 @@ const Header = () => {
 
     // Destructuring useContext.
     const { changeTheme } = useContext(ThemeContext);
-    const { handleMenuChange, whatMenu, nappyMenu, acanMenu } = useContext(MenuContext);
+    const { acanMenu } = useContext(MenuContext);
 
     return (
         <div className="nappyNavigation">
             <Navbar expand="lg">
                 <Navbar.Brand as={Link} to="/" className="logoPosition">
-                    <img src={Logo} alt="logoNappy" style={{ width: '100px' }}/>
+                    <img src={Logo} alt="logoAcan" />
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link as={Link} onClick={handleMenuChange} to="#">Nappy</Nav.Link>
-                        <Nav.Link as={Link} onClick={handleMenuChange} to="#">Acan</Nav.Link>
-                        {whatMenu && <span className="dividerMenu"></span> }
-                        {whatMenu === 'Nappy' && nappyMenu.map(voice => { return <Nav.Link as={Link} to="/nappy">{Object.keys(voice)}</Nav.Link> })}
-                        {whatMenu === 'Acan' && acanMenu.map(voice => { return <Nav.Link as={Link} to={Object.values(voice)}>{Object.keys(voice)}</Nav.Link> })}
+                        { acanMenu.map(voice => { return <Nav.Link as={Link} to={Object.values(voice)}>{Object.keys(voice)}</Nav.Link>})}
                     </Nav>
                     <Form inline>
                         <SearchBar />

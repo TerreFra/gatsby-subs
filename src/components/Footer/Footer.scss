@@ -1,0 +1,16 @@
+@import '../../variables.scss';
+
+
+.footerClass {
+    text-align: center;
+    line-height: 2.5em;
+
+    & .copyRight { font-size: 11px; }
+
+    & .disclaimer {
+        font-size: 13px;
+        & a { font-weight: 600;}
+    }
+
+    & .footerDivider { font-size: 9px; position: relative; top: -2px; }
+}

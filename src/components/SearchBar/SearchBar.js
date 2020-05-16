@@ -63,7 +63,7 @@ const SearchBar = () => {
 
     return (
         <React.Fragment>
-            <FontAwesomeIcon icon={faSearch} onClick={handleSearchShow} />
+            <FontAwesomeIcon className="searchIcon mr-2" icon={faSearch} onClick={handleSearchShow} />
             <Modal show={showSearch} onHide={handleSearchClose} className="searchWrapper">
                 
                 <Modal.Header closeButton />

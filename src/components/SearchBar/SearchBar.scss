@@ -1,6 +1,13 @@
+@import '../../variables.scss';
+
+// Icon Fix.
+// ------------------
+.searchIcon {
+    color: $title-color-dark;
+}
+
 // Search Wrapper styles, per metterlo fullWidth.
 // ------------------
-
 .searchWrapper .modal-dialog {
     max-width: 100%;
     margin: 0;

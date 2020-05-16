@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Accordion, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faListUl } from '@fortawesome/free-solid-svg-icons';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby';
 import './ChapterTool.scss';
 
@@ -27,7 +27,7 @@ const ChapterTool = props => {
    }
     return (
         <React.Fragment>
-            <FontAwesomeIcon icon={faListUl} onClick={handleChapterShow} />
+            <FontAwesomeIcon icon={faBook} onClick={handleChapterShow} />
 
             <Modal show={showChapters} onHide={handleChapterClose}>
                 

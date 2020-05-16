@@ -21,14 +21,14 @@ export default ({ data }) => {
       <div className="container py-5">
         <div className="row">
           <div className="col-lg-6 acanPosts">
-            <ListContainer postInfo={data} name="Acan" />
+            <ListContainer postInfo={data} name="Guild Master" slugFilter="after-defeating-the-demon-lord-he-became-guild-master" />
           </div>
           <div className="col-lg-6 nappyPosts">
-            <ListContainer postInfo={data} name="Nappy" />
+            <ListContainer postInfo={data} name="New Game" slugFilter="a-new-game-from-the-depths-of-captivity" />
           </div>
         </div>
       </div>
-      <div className="fastAccess border-top  py-5">
+      <div className="fastAccess border-top py-5">
         <div className="container">
           <div className="row">
             <div className="col-lg-4">
@@ -50,13 +50,14 @@ export default ({ data }) => {
 
 export const query = graphql`
 {
-  allWordpressPost(limit: 10) {
+  allWordpressPost(limit: 12) {
     nodes {
       slug
       title
       excerpt
       categories {
         name
+        slug
       }
     }
   }

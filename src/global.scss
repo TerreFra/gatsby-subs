@@ -9,24 +9,6 @@ div, a, p { font-family: $text-font; }
 // ------------------
 html, body { height: 100%; }
 
-.dividerMenu {
-    width: 1px;
-    height: 15px;
-    background: $title-color-dark;
-    margin: auto 10px;
-}
-
-.littleDivider {
-    width: 50px;
-    height: 2px;
-    background: $title-color-dark;
-}
-
-@media (max-width: 991px) {
-    .dividerMenu { display: none; }
-}
-
-
 // Theme Styles
 // ------------------
 
@@ -58,6 +40,8 @@ html, body { height: 100%; }
             margin: 0;
         }
     }
+
+    & .copyRight { color: #dddddd; }
 }
 
 .lightTheme {
@@ -78,17 +62,19 @@ html, body { height: 100%; }
             margin: 0;
         }
     }
+
+    & .copyRight { color: #666; }
+
+    & .custom-control-label {
+       &:before { border: 1px solid $title-color-dark; }
+       &:after { background-color: $title-color-dark; }   
+    }
 }
 
 // Logo Styles
 // ------------------
 
-.logoPosition {
-    position: relative;
-    top: 65px;
-    margin-top: -100px;
-    margin-right: 0.5rem;
-}
+.logoPosition { }
 
 @media(max-width: 991px) {
     .navbar-collapse { margin-top: 2.5rem; }
