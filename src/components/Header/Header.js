@@ -3,7 +3,6 @@ import Logo from '../../../static/logoAcan.png';
 import SearchBar from '../SearchBar/SearchBar';
 
 import { ThemeContext } from '../Context/ThemeContext';
-import { MenuContext } from '../Context/MenuContext';
 import { Navbar, Nav, Form } from 'react-bootstrap';
 import { Link } from 'gatsby';
 
@@ -11,7 +10,9 @@ const Header = () => {
 
     // Destructuring useContext.
     const { changeTheme } = useContext(ThemeContext);
-    const { acanMenu } = useContext(MenuContext);
+
+    // Menu Acan.
+    const acanMenu = [ {'Projects' : 'projects'}, {'Special Thanks' : 'special_thanks'}, {'About Us': 'about_us' } ];
 
     return (
         <div className="nappyNavigation">

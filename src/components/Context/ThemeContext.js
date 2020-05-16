@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 // Creo il context e lo scompongo.
 let ThemeContext;
+
 const defaultState =  {
     isDark: true
 }
@@ -24,9 +25,9 @@ const ThemeProvider = props => {
 }
 
 // Esporto il componente Provider.
-export default ({ children }) => (
+export default ({ element }) => (
     <ThemeProvider>
-        {children} 
+        {element} 
     </ThemeProvider>
 );
 
