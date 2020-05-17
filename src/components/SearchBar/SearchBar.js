@@ -3,6 +3,9 @@ import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useStaticQuery, graphql, Link } from 'gatsby'; // GraphQL
+
+import Banner from '../../../static/bannerSlider.png';
+
 import * as JsSearch from "js-search"; // JsSearch
 import './SearchBar.scss';
 
@@ -16,6 +19,7 @@ const SearchBar = () => {
                 nodes {
                 slug
                 title
+                excerpt
                 }
             }
         }
@@ -30,7 +34,7 @@ const SearchBar = () => {
     // Js-Search Index & StateManager
     const [rawIndex, setRawIndex] = useState();
     const [searchIndex, setSearchIndex] = useState();
-    const [searchResult, setSearchResult] = useState();
+    const [searchResult, setSearchResult] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
@@ -49,6 +53,7 @@ const SearchBar = () => {
 
        dataToSearch.addIndex('slug');
        dataToSearch.addIndex('title');
+       dataToSearch.addIndex('excerpt');
 
        dataToSearch.addDocuments(rawIndex);
        setSearchIndex(dataToSearch);
@@ -66,13 +71,22 @@ const SearchBar = () => {
             <FontAwesomeIcon className="searchIcon mr-2" icon={faSearch} onClick={handleSearchShow} />
             <Modal show={showSearch} onHide={handleSearchClose} className="searchWrapper">
                 
-                <Modal.Header closeButton />
+                <Modal.Header closeButton>
+                    <FontAwesomeIcon className="searchIconInside mr-3" icon={faSearch} />
+                    <input type="text" value={searchQuery} onChange={searchData} placeholder="Search your novel chapter." />
+                </Modal.Header>
 
                 <Modal.Body>
-                    <input type="text" value={searchQuery} onChange={searchData} />
+                    {!searchQuery &&
+                    <div className="placeholderSearch">
+                        <h1>Lorem Ipsum! Che stavi cercando?</h1>
+                        <img src={Banner} alt="bannerSlider" className="searchMascottes py-5" />
+                    </div>
+                    }
                     {searchResult && searchResult.map((result, index) => (
-                        <li key={index}>
+                        <li className="searchResult mb-3 py-3 px-3" key={index}>
                             <Link to={result.slug} dangerouslySetInnerHTML={{ __html: result.title }} />
+                            <p dangerouslySetInnerHTML={{ __html: result.excerpt }} />
                         </li>
                     ))}
                 </Modal.Body>

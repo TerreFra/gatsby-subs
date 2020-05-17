@@ -13,7 +13,7 @@ const PagesLayout = ({ data }) => {
   const pageData = data.wordpressPage;
 
     return (
-          <div id="pagesLayout" className={isDark ? 'lightTheme' : 'darkTheme'}>
+          <div id="pagesLayout" className={isDark ? 'darkTheme' : 'lightTheme'}>
             <Header></Header>
             <div className="container">
             <div className="spacerDiv pt-4"></div>

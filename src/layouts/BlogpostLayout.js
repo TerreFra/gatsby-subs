@@ -44,7 +44,7 @@ const BlogpostLayout = ({ data }) => {
     }
 
     return (
-        <div id="blogpostLayout" className={isDark ? 'lightTheme' : 'darkTheme'}>
+        <div id="blogpostLayout" className={isDark ? 'darkTheme' : 'lightTheme'}>
             <Header></Header>
             <ProgressBar attachTo={progressRef} />
 

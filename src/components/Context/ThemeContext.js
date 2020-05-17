@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ls from 'local-storage'; // Local Storage
 
 // Creo il context e lo scompongo.
 let ThemeContext;
@@ -12,9 +13,11 @@ const { Provider, Consumer } = ThemeContext = React.createContext(defaultState);
 const ThemeProvider = props => {
  
     // themeState
-    const [isDark, setDark] = useState(true);
+    const [isDark, setDark] = useState(ls.get('themeColor') || true);
+    
     const changeTheme = () => {
         setDark(!isDark);
+        ls.set('themeColor', isDark)
     };
 
     return (

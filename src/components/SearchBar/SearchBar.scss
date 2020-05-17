@@ -2,13 +2,40 @@
 
 // Icon Fix.
 // ------------------
-.searchIcon {
-    color: $title-color-dark;
+.searchIcon { color: $title-color-dark; }
+.searchIconInside { margin-top: 6px; }
+
+.searchMascottes { width: 500px; }
+@media (max-width: 550px) {
+    .searchMascottes { width: 100%; }
 }
 
-// Search Wrapper styles, per metterlo fullWidth.
+
+
+// Search Wrapper styles, per metterlo fullWidth & fullHeight
 // ------------------
 .searchWrapper .modal-dialog {
     max-width: 100%;
     margin: 0;
+
+    .modal-body { 
+
+        .searchResult {
+            border: 1px solid #cccc;
+            border-radius: 5px;
+            list-style: none;
+
+            p { margin: 0; }
+        }
+
+        .placeholderSearch { text-align: center; }
+    }
+
+    & input {
+        border: 0;
+        width: 100%;
+    }
 }
+
+.modal-content,
+.modal-dialog { height: 100%; }
