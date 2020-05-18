@@ -14,11 +14,13 @@
 
 // Search Wrapper styles, per metterlo fullWidth & fullHeight
 // ------------------
+.searchWrapper { padding: 0!important; }
 .searchWrapper .modal-dialog {
     max-width: 100%;
     margin: 0;
 
-    .modal-body { 
+    .modal-body {        
+        padding: 1.7vw 5vw;
 
         .searchResult {
             border: 1px solid #cccc;
@@ -28,7 +30,7 @@
             p { margin: 0; }
         }
 
-        .placeholderSearch { text-align: center; }
+        .placeholderSearch { text-align: center; height: 81vh; }
     }
 
     & input {
@@ -36,6 +38,3 @@
         width: 100%;
     }
 }
-
-.modal-content,
-.modal-dialog { height: 100%; }

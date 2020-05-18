@@ -19,7 +19,7 @@ const Header = () => {
 
     return (
         <div className="nappyNavigation">
-            <Navbar expand="lg">
+            <Navbar expand="lg" variant={isDark ? 'dark' : 'light'}>
                 <Navbar.Brand as={Link} to="/" className="logoPosition">
                     <img src={Logo} alt="logoAcan" />
                 </Navbar.Brand>

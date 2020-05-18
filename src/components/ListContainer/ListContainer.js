@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'gatsby';
 import { ListGroup } from 'react-bootstrap';
 
+import { ProgressBar } from 'react-bootstrap';
+
+
 const ListContainer = (props) => {
     return (
         <div className="listContainer py-3">

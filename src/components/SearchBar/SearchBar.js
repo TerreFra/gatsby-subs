@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faPoll } from '@fortawesome/free-solid-svg-icons';
 import { useStaticQuery, graphql, Link } from 'gatsby'; // GraphQL
 
 import Banner from '../../../static/bannerSlider.png';
@@ -20,6 +20,9 @@ const SearchBar = () => {
                 slug
                 title
                 excerpt
+                categories {
+                    name
+                  }
                 }
             }
         }
@@ -53,7 +56,6 @@ const SearchBar = () => {
 
        dataToSearch.addIndex('slug');
        dataToSearch.addIndex('title');
-       dataToSearch.addIndex('excerpt');
 
        dataToSearch.addDocuments(rawIndex);
        setSearchIndex(dataToSearch);
@@ -83,9 +85,11 @@ const SearchBar = () => {
                         <img src={Banner} alt="bannerSlider" className="searchMascottes py-5" />
                     </div>
                     }
+                    {searchQuery && <div className="resultsCounter text-left mb-3"><FontAwesomeIcon className="mr-1" icon={faPoll} /> {searchResult.length} Results.</div>}
                     {searchResult && searchResult.map((result, index) => (
                         <li className="searchResult mb-3 py-3 px-3" key={index}>
                             <Link to={result.slug} dangerouslySetInnerHTML={{ __html: result.title }} />
+                            <h6 className="mt-2" dangerouslySetInnerHTML={{ __html: result.categories[0].name }} />
                             <p dangerouslySetInnerHTML={{ __html: result.excerpt }} />
                         </li>
                     ))}
