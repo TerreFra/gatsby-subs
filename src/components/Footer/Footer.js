@@ -8,7 +8,15 @@ import './Footer.scss';
 const Footer = () => (
     <footer className="footerClass border-top py-3">
         <div className="container-fluid">
-            <FontAwesomeIcon icon={faDiscord} className="mr-2" /> <FontAwesomeIcon icon={faTwitter} className="mr-2" /> <FontAwesomeIcon icon={faEnvelope} /> 
+            <a href="https://discord.gg/nuTAKpM" target="_blank">
+                <FontAwesomeIcon icon={faDiscord} className="mr-2" />
+            </a> 
+            <a href="https://twitter.com/Nappysubs" target="_blank">
+                <FontAwesomeIcon icon={faTwitter} className="mr-2" />
+            </a> 
+            <a href="mailto:acantranslations@gmail.com">
+                <FontAwesomeIcon icon={faEnvelope} />
+            </a> 
             <div className="disclaimer">
                 <Link to="/privacy-policy">Privacy Policy</Link> 
                     <span className="footerDivider mx-2">|</span> 
