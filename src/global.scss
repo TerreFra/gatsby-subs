@@ -8,6 +8,7 @@ div, a, p { font-family: $text-font; }
 // Global utilities.
 // ------------------
 html, body { height: 100%; }
+input:focus { outline: 0; }
 
 .switcherIcons { font-size: 10px; }
 
@@ -34,9 +35,6 @@ html, body { height: 100%; }
         }
     }
 
-    & .modal-content {
-        background-color: $main-color-dark;
-    }
 
     & .list-group-item {
         background-color: $main-color-dark;
@@ -54,7 +52,23 @@ html, body { height: 100%; }
 
         &.border-top { border-top: 0px solid!important; }
     }
+    
     & .copyRight { color: #dddddd; }
+
+    &.searchWrapper 
+        .modal-content { background-color: $main-color-dark; border-bottom: 0; }
+
+        .modal-dialog {
+
+            .close { color: $text-color-dark; }
+
+            input { 
+                background: $main-color-dark;
+                color: $text-color-dark;
+
+                &::placeholder { color: $text-color-dark; }
+            }
+        }
 }
 
 .lightTheme {
@@ -76,6 +90,10 @@ html, body { height: 100%; }
         }
     }
 
+    &.searchWrapper {
+        .modal-content { border-bottom: 0; }
+    }
+
     & .copyRight { color: #666; }
 
     & .custom-control-label {
@@ -86,8 +104,6 @@ html, body { height: 100%; }
 
 // Logo Styles
 // ------------------
-
-.logoPosition { }
 
 @media(max-width: 991px) {
     .navbar-collapse { margin-top: 2.5rem; }

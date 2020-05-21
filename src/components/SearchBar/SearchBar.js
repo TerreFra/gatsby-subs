@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faPoll } from '@fortawesome/free-solid-svg-icons';
 import { useStaticQuery, graphql, Link } from 'gatsby'; // GraphQL
 
 import Banner from '../../../static/bannerSlider.png';
+import { ThemeContext } from '../Context/ThemeContext';
 
 import * as JsSearch from "js-search"; // JsSearch
 import './SearchBar.scss';
@@ -67,11 +68,13 @@ const SearchBar = () => {
         setSearchResult(queryResult);
     }
 
+    const { isDark } = useContext(ThemeContext);
+
 
     return (
         <React.Fragment>
             <FontAwesomeIcon className="searchIcon mr-2" icon={faSearch} onClick={handleSearchShow} />
-            <Modal show={showSearch} onHide={handleSearchClose} className="searchWrapper">
+            <Modal show={showSearch} onHide={handleSearchClose} className={isDark ? 'searchWrapper darkTheme' : 'searchWrapper lightTheme'}>
                 
                 <Modal.Header closeButton>
                     <FontAwesomeIcon className="searchIconInside mr-3" icon={faSearch} />
@@ -95,9 +98,6 @@ const SearchBar = () => {
                     ))}
                 </Modal.Body>
                 
-                <Modal.Footer>
-                    <Button variant="primary" onClick={handleSearchClose}>Close</Button>
-                </Modal.Footer>
             </Modal>
         </React.Fragment>
     );
