@@ -58,7 +58,7 @@ const BlogpostLayout = ({ data }) => {
 
                 <div className="row justify-content-md-center px-3">
                     <div className="postHeading">
-                        <h1 className="pb-4" dangerouslySetInnerHTML={{ __html: postData.title }} />
+                        <h3 className="pb-4" dangerouslySetInnerHTML={{ __html: postData.title }} />
                     </div>
                     <div dangerouslySetInnerHTML={{ __html: postData.content }} ref={progressRef} style={{ fontSize: size, lineHeight: lineHeight }} />
                 </div>

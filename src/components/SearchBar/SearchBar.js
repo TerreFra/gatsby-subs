@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faPoll } from '@fortawesome/free-solid-svg-icons';
 import { useStaticQuery, graphql, Link } from 'gatsby'; // GraphQL
@@ -84,7 +84,8 @@ const SearchBar = () => {
                 <Modal.Body>
                     {!searchQuery &&
                     <div className="placeholderSearch">
-                        <h1>Lorem Ipsum! Che stavi cercando?</h1>
+                        <h3>Lorem Ipsum! Che stavi cercando?</h3>
+                        <p>Acan fucker fuck ur shitterz.</p>
                         <img src={Banner} alt="bannerSlider" className="searchMascottes py-5" />
                     </div>
                     }

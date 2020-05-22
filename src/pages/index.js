@@ -32,7 +32,7 @@ export default ({ data }) => {
         <div className="container">
           <div className="row">
             <div className="col-lg-4">
-              <h3 className="py-3">Nappys Spaghettis fuk u shittis.</h3>
+              <h5 className="py-3">Acan Lorem Ipsum.</h5>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, 
                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               <p>Qui ci metterei le mascottine.</p>

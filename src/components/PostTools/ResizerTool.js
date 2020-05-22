@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React, { useState, useContext } from 'react';
+import { Modal } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
+
+import { ThemeContext } from '../Context/ThemeContext';
 
 const ResizerTool = props => {
 
@@ -23,11 +25,13 @@ const ResizerTool = props => {
         e.preventDefault();
     }
 
+    const { isDark } = useContext(ThemeContext);
+
     return (
         <React.Fragment>
             <FontAwesomeIcon icon={faCog} onClick={handleResizerShow} />
 
-            <Modal show={showResizer} onHide={handleResizerClose}>
+            <Modal show={showResizer} onHide={handleResizerClose} className={isDark ? 'chapterModal darkTheme' : 'chapterModal lightTheme'}>
                 
                 <Modal.Header closeButton>
                     <Modal.Title>Nappy's maggix grants u wisshis. </Modal.Title>
@@ -37,11 +41,6 @@ const ResizerTool = props => {
                     <span>Font Size: {props.fontSize}</span><input className="w-100" type="range" min="12" max="24" onChange={handleFontChange} defaultValue={parseInt(props.fontSize)} />
                     <span>Line Height: {props.lineHeight}</span><input className="w-100" type="range" min="10" max="26" onChange={handleLineHeightChange} defaultValue={parseInt(props.lineHeight * 10)} />
                 </Modal.Body>
-
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleResizerClose}>Close</Button>
-                    <Button variant="primary" onClick={handleResizerClose}>Save Maggix</Button>
-                </Modal.Footer>
             </Modal>
 
         </React.Fragment >

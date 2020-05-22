@@ -1,7 +1,7 @@
 @import 'variables.scss';
 
 // Typohraphy
-h1,h2,h3,h4,h5,h6 { font-family: $title-font; color: $title-color-dark; }
+h1,h2,h3,h4,h5,h6 { font-family: $title-font; color: $title-color-dark; text-transform: uppercase; letter-spacing: 2.5px; }
 div, a, p { font-family: $text-font; }
 
 
@@ -19,7 +19,7 @@ input:focus { outline: 0; }
     background-color: $main-color-dark;
     color: $text-color-dark;
 
-    .border-top { border-top: 1px solid $title-color-dark!important; }
+    .border-top { border-top: 1px solid #dddddd!important; }
 
     & p, 
     & a { color: $text-color-dark; } // Standard dark typography.
@@ -55,6 +55,32 @@ input:focus { outline: 0; }
     
     & .copyRight { color: #dddddd; }
 
+    & .searchIcon { color: $text-color-dark; }
+
+    &.chapterModal { 
+        background: transparent;
+
+        & .modal-content { 
+            background-color: $main-color-dark; 
+            border-bottom: 0;
+
+            & .modal-header { border-bottom: 1px solid #cccc; }
+
+            & .modal-title { color: $title-color-dark; font-size: 16px; text-transform: uppercase; letter-spacing: 2.5px;  }
+        }
+
+        & .chapterAccordion {
+            & .internalAccordion li a { color: $text-color-dark; }
+
+            .card-header {
+            background-color: $main-color-dark;
+            border: 1px solid #cccc;
+            }
+
+           & h6 { color: $text-color-dark; } 
+        }
+    }
+
     &.searchWrapper 
         .modal-content { background-color: $main-color-dark; border-bottom: 0; }
 
@@ -88,6 +114,17 @@ input:focus { outline: 0; }
             font-size: 0.8rem;
             margin: 0;
         }
+    }
+
+    &.chapterModal { 
+        background: transparent;
+
+        & .modal-title { color: $title-color-dark; font-size: 16px; text-transform: uppercase; letter-spacing: 2.5px;  }
+    }
+
+    & .chapterAccordion {
+        & .internalAccordion li a { color: #333333; letter-spacing: 1px; text-transform: uppercase; font-size: 10px; }
+        & h6 { color: #333333; }
     }
 
     &.searchWrapper {

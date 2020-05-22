@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { Modal, Button, Accordion, Card } from 'react-bootstrap';
+import React, { useState, useContext } from 'react';
+import { Modal, Accordion, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby';
 import './ChapterTool.scss';
 
+import { ThemeContext } from '../Context/ThemeContext';
 
 
 const ChapterTool = props => { 
@@ -25,11 +26,14 @@ const ChapterTool = props => {
             
             return results;
    }
+
+   const { isDark } = useContext(ThemeContext);
+
     return (
         <React.Fragment>
             <FontAwesomeIcon icon={faBook} onClick={handleChapterShow} />
 
-            <Modal show={showChapters} onHide={handleChapterClose}>
+            <Modal show={showChapters} onHide={handleChapterClose} className={isDark ? 'chapterModal darkTheme' : 'chapterModal lightTheme'}>
                 
                 <Modal.Header closeButton>
                     <Modal.Title>Nappy's maggix grants your chapterz. </Modal.Title>
@@ -53,10 +57,6 @@ const ChapterTool = props => {
                         </Accordion>
                     ))}
                 </Modal.Body>
-                
-                <Modal.Footer>
-                    <Button variant="primary" onClick={handleChapterClose}>Close</Button>
-                </Modal.Footer>
             </Modal>
 
         </React.Fragment>

@@ -8,7 +8,7 @@ import { ProgressBar } from 'react-bootstrap';
 const ListContainer = (props) => {
     return (
         <div className="listContainer py-3">
-            <h5 className="pb-1">Latest {props.name} Releases</h5>
+            <h6 className="pb-1">Latest {props.name} Releases</h6>
             <div className="littleDivider mb-1" />
             <ListGroup variant="flush">
                 {props.postInfo.allWordpressPost.nodes.map((post, index) => {
